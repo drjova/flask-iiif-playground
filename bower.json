@@ -1,0 +1,20 @@
+{
+  "name": "iiif",
+  "version": "0.2.0",
+  "authors": [
+    "Harris Tzovanakis <me@drjova.com>"
+  ],
+  "description": "Flask IIIIF",
+  "license": "MIT",
+  "homepage": "drjova.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.96.1"
+  }
+}

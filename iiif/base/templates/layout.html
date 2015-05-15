@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>{{ title | default('Quality') }}</title>
+    {% assets filters="uglifyjs", output="main.js",
+        "vendors/jquery/dist/jquery.js",
+        "vendors/bootstrap/dist/js/bootstrap.js",
+        "js/main.js"
+    %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets filters="cleancss", output="main.css",
+        "vendors/bootstrap/dist/css/bootstrap.css",
+        "css/home.css"
+    %}
+        <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css">
+    {% endassets %}
+    {% block assets_extra %}{% endblock %}
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    {% include 'flash.html' %}
+    {% block before_content %}{% endblock %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {% block content %} {% endblock %}
+        </div>
+      </div>
+    </div>
+    {% block after_content %}{% endblock %}
+    {% include 'footer.html' %}
+  </body>
+</html>

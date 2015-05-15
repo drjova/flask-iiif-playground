@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block before_content %}
+<div id="main"
+     data-base="{{ url_for('iiifimagebase', uuid="space", version="v2", _external=True) }}">
+    <div class="main-controls">
+        <span class="url-prefix"></span>/<input name="region" value="full"/>/<input name="size" value="full" />/<input name="rotation" value="0" />/<input name="quality" value="default"/>.<input name="image_format" value="png" />
+    </div>
+    <div class="main-wrapper">
+        <img class="img-responsive"  />
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+{% endblock %}
