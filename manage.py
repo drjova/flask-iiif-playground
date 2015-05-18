@@ -12,7 +12,7 @@ env = os.environ.get('iiif_ENV', 'dev')
 instance_path = ""
 if env == "Heroku":
     instance_path = os.path.join(
-        os.path.abspath(os.path.dirname(__file__)), 'instance'
+        os.path.abspath(os.path.dirname(__file__)), 'iiif', instance'
     )
 
 app = create_app(instance_path=instance_path, env=env)
