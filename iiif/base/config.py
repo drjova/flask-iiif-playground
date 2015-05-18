@@ -30,7 +30,7 @@ class ProdConfig(Config):
 class HerokuConfig(Config):
 
     """Heroku config."""
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'sdpdaskdsaodk')
+    SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(24))
 
 
 class DevConfig(Config):
@@ -39,7 +39,8 @@ class DevConfig(Config):
 
     DEBUG = True
     ASSETS_DEBUG = True
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'sdpdaskdsaodk')
+    SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(24))
+
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     SQLALCHEMY_ECHO = True
     WTF_CSRF_ENABLED = False
