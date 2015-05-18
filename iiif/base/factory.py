@@ -16,6 +16,7 @@ from flask_registry import (
 def create_app(instance_path="", env="prod"):
     """Create the app."""
     app_name = '.'.join(__name__.split('.')[0:2])
+
     instance_path = instance_path or os.path.join(
         sys.prefix, 'var', app_name + '-instance'
     )
@@ -24,6 +25,7 @@ def create_app(instance_path="", env="prod"):
             os.makedirs(instance_path)
     except Exception:
         pass
+
     app = Flask(
         app_name,
         instance_path=instance_path,
