@@ -9,9 +9,8 @@ from flask_script import Manager, Server, Shell, prompt_choices
 from flask_script.commands import ShowUrls, Clean
 
 env = os.environ.get('iiif_ENV', 'dev')
-
 instance_path = ""
-if env == "HEROKU":
+if env == "Heroku":
     instance_path = os.path.join(
         os.path.abspath(os.path.dirname(__file__)), 'instance'
     )

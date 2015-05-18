@@ -33,6 +33,7 @@ class HerokuConfig(Config):
     """Heroku config."""
 
     SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(24))
+    COLLECT_STORAGE = 'flask.ext.collect.storage.file'
 
 
 class DevConfig(Config):
