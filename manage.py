@@ -10,7 +10,13 @@ from flask_script.commands import ShowUrls, Clean
 
 env = os.environ.get('iiif_ENV', 'dev')
 
-app = create_app(env=env)
+instance_path = ""
+if env == "HEROKU":
+    instance_path = os.path.join(
+        os.path.abspath(os.path.dirname(__file__)), 'instance'
+    )
+
+app = create_app(instance_path=instance_path, env=env)
 
 manager = Manager(app=app)
 manager.add_command("show-urls", ShowUrls())
