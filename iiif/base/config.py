@@ -1,5 +1,5 @@
 """Config app."""
-
+import os
 
 class Config(object):
 
@@ -30,6 +30,7 @@ class ProdConfig(Config):
 class HerokuConfig(Config):
 
     """Heroku config."""
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'sdpdaskdsaodk')
 
 
 class DevConfig(Config):
@@ -38,6 +39,7 @@ class DevConfig(Config):
 
     DEBUG = True
     ASSETS_DEBUG = True
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'sdpdaskdsaodk')
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     SQLALCHEMY_ECHO = True
     WTF_CSRF_ENABLED = False

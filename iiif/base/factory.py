@@ -17,7 +17,7 @@ from flask_registry import (
 def create_app(instance_path="", env="prod"):
     """Create the app."""
     app_name = '.'.join(__name__.split('.')[0:2])
-    if env in ['prod', 'dev']:
+    if env in ['eclips']:
         instance_path = instance_path or os.path.join(
             sys.prefix, 'var', app_name + '-instance'
         )
@@ -43,7 +43,6 @@ def create_app(instance_path="", env="prod"):
         env.capitalize()
     )
     app.config.from_object(env_object)
-
     app.config.from_envvar('iiif_ENV_SRC', silent=True)
     app.config.from_pyfile('application.cfg', silent=True)
 
