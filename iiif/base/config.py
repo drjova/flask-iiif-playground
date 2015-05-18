@@ -1,6 +1,7 @@
 """Config app."""
 import os
 
+
 class Config(object):
 
     """General config."""
@@ -30,6 +31,7 @@ class ProdConfig(Config):
 class HerokuConfig(Config):
 
     """Heroku config."""
+
     SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(24))
 
 

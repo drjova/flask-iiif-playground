@@ -17,7 +17,7 @@ from flask_registry import (
 def create_app(instance_path="", env="prod"):
     """Create the app."""
     app_name = '.'.join(__name__.split('.')[0:2])
-    if env in ['eclips']:
+    if env in ['prod', 'dev']:
         instance_path = instance_path or os.path.join(
             sys.prefix, 'var', app_name + '-instance'
         )
@@ -49,9 +49,6 @@ def create_app(instance_path="", env="prod"):
     # Ignore slashes
     app.url_map.strict_slashes = False
 
-    # register_secret_key
-    register_secret_key(app)
-
     # Add the proxies
     Registry(app=app)
     app.extensions['registry'].update(
@@ -64,21 +61,6 @@ def create_app(instance_path="", env="prod"):
     ConfigurationRegistry(app)
     _setup_app_errors(app)
     return app
-
-
-def register_secret_key(app):
-    """Register secret key."""
-    SECRET_KEY = app.config.get('SECRET_KEY', 'abcdefg')
-
-    if SECRET_KEY == 'abcdefg':
-        warnings.warn(
-            ("You might want to add a random secret key by running"
-             "/n $ python manage.py secret"),
-            UserWarning
-        )
-    app.config.update(
-        SECRET_KEY=SECRET_KEY
-    )
 
 
 def _setup_app_errors(app):
