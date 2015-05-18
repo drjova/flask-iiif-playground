@@ -13,3 +13,9 @@ blueprint = Blueprint(
 def index():
     """Index page."""
     return render_template('home.html')
+
+
+@blueprint.route('/previewer')
+def previewer():
+    """Index page."""
+    return render_template('previewer.html')

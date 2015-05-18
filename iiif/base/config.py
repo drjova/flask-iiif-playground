@@ -27,11 +27,16 @@ class ProdConfig(Config):
     """Production config."""
 
 
+class HerokuConfig(Config):
+
+    """Heroku config."""
+
+
 class DevConfig(Config):
 
     """Dev config."""
 
-    DEBUG = False
+    DEBUG = True
     ASSETS_DEBUG = True
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     SQLALCHEMY_ECHO = True

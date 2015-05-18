@@ -1,13 +1,43 @@
 {% extends "layout.html" %}
-
+{% block assets_extra %}
+    {% assets filters="uglifyjs", output="home.js",
+        "js/restful.js"
+    %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets filters="cleancss", output="restful.css",
+        "css/restful.css"
+    %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css">
+    {% endassets %}
+{% endblock %}
 {% block before_content %}
 <div id="main"
-     data-base="{{ url_for('iiifimagebase', uuid="space", version="v2", _external=True) }}">
+     data-base="{{ url_for('iiifimagebase', uuid="space.jpg", version="v2", _external=True) }}">
     <div class="main-controls">
-        <span class="url-prefix"></span>/<input name="region" value="full"/>/<input name="size" value="full" />/<input name="rotation" value="0" />/<input name="quality" value="default"/>.<input name="image_format" value="png" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                    <form id="image-1-form">
+                    <div class="form-group-sm">
+                        <span data-toggle="tooltip" data-placement="bottom" title="Base URI" class="url-prefix" name="URI Syntax"></span>/
+                        <input data-default="full" class="input-large" name="region" value="full" data-toggle="tooltip" data-placement="bottom" title="Region"/>/
+                        <input data-default="full" data-toggle="tooltip" data-placement="bottom" title="Size" class="input-large" name="size" value="full" />/
+                        <input data-default="0" data-toggle="tooltip" data-placement="bottom" title="Rotation" class="input-small" name="rotation" value="0" />/
+                        <input data-default="default" data-toggle="tooltip" data-placement="bottom" title="Quality" class="input-large" name="quality" value="default"/>.
+                        <input data-default="png" data-toggle="tooltip" data-placement="bottom" title="Format" class="input-small" name="image_format" value="png" />
+                        <a href="javascript:void(0)" class="reset-button"><i class="fa fa-times"></i></a>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="main-wrapper">
-        <img class="img-responsive"  />
+    <div class="image-1-wrapper">
+        <div class="loader-1">
+            <i class="fa fa-cog fa-3x fa-spin"></i>
+        </div>
+        <img id="image-1" class="img-responsive" />
     </div>
 </div>
 {% endblock %}

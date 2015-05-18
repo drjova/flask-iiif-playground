@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-    <title>{{ title | default('Quality') }}</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>{{ title | default('Flask-IIIF Demo') }}</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     {% assets filters="uglifyjs", output="main.js",
         "vendors/jquery/dist/jquery.js",
-        "vendors/bootstrap/dist/js/bootstrap.js",
-        "js/main.js"
+        "vendors/bootstrap/dist/js/bootstrap.js"
     %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
     {% assets filters="cleancss", output="main.css",
         "vendors/bootstrap/dist/css/bootstrap.css",
-        "css/home.css"
+        "vendors/font-awsome/css/font-awesome.css",
+        "css/general.css"
     %}
         <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css">
     {% endassets %}
