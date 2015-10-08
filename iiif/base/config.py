@@ -48,4 +48,3 @@ class DevConfig(Config):
     SQLALCHEMY_ECHO = True
     WTF_CSRF_ENABLED = False
     COLLECT_STORAGE = 'flask_collect.storage.link'
-    SQLALCHEMY_DATABASE_URI = "mysql://root:@localhost/iiif"
